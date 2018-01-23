@@ -1,0 +1,11 @@
+{
+  "name": "website-limiter-v2",
+  "version": "1.0.0",
+  "description": "Limits visits to particular websites",
+  "main": "index.js",
+  "author": "Trey Hakanson",
+  "license": "MIT",
+  "dependencies": {
+    "typicons.font": "^2.0.9"
+  }
+}

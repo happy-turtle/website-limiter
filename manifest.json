@@ -1,0 +1,35 @@
+{
+   "manifest_version": 2,
+   "name": "Website Limiter",
+   "version": "1.0",
+
+   "description":
+      "Limits visits to given websites and provide periodic analysis of browser history to suggest new limits.",
+
+   "icons": {
+      "48": "icons/icon-48.png",
+      "96": "icons/icon-96.png"
+   },
+
+   "permissions": ["<all_urls>", "storage", "webRequest", "webRequestBlocking"],
+
+   "web_accessible_resources": [
+      "src/views/splash.html",
+      "node_modules/typicons.font/*"
+   ],
+
+   "browser_action": {
+      "default_icon": "icons/icon-32.png",
+      "default_title": "Website Limiter",
+      "default_popup": "src/views/popup.html"
+   },
+
+   "background": {
+      "scripts": [
+         "src/constants.js",
+         "src/utils.js",
+         "src/background/limit-reset.js",
+         "src/background/visit-tracker.js"
+      ]
+   }
+}
