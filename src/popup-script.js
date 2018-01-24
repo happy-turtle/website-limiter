@@ -28,7 +28,11 @@
    // helper functions
    function handleSites(sites) {
       const siteList = document.getElementById("site-list");
-      siteList.innerHTML = "";
+
+      while (siteList.firstChild) {
+         siteList.removeChild(siteList.firstChild);
+      }
+
       sites.forEach(site => {
          const t = siteTemplate(document, site);
          siteList.appendChild(t);
@@ -94,32 +98,42 @@
    }
 
    function siteTemplate(document, site) {
-      let innerIcon, paddingClass;
       let t = document.createElement("div");
       t.className = "site-template";
 
-      if (site.icon) {
-         innerIcon = `<div class="icon-wrapper__icon" style="background-image:url(${
-            site.icon
-         });"></div>`;
-         paddingClass = "";
-      } else {
-         innerIcon =
-            '<div class="icon-wrapper__icon typcn typcn-link-outline"></div>';
-         paddingClass = "no-padding";
-      }
+      let iconWrapper = document.createElement("div");
+      iconWrapper.className = `site-template__icon-wrapper no-padding`;
 
-      t.innerHTML = `
-         <div class="site-template__icon-wrapper ${paddingClass}">${innerIcon}</div>
-         <span class="site-template__url">${site.url}</span>
-         <div class="site-template__spacer"></div>
-         <div class="site-template__info">
-            <span class="info__usage">${site.visits}/${site.allowance}</span>
-            <span class="typcn typcn-delete info__remove" data-site="${
-               site.url
-            }"></span>
-         </div>
-      `;
+      let innerIcon = document.createElement("div");
+      innerIcon.className = "icon-wrapper__icon typcn typcn-link-outline";
+
+      let templateURL = document.createElement("span");
+      templateURL.className = "site-template__url";
+      templateURL.textContent = site.url;
+
+      let templateSpacer = document.createElement("div");
+      templateSpacer.className = "site-template__spacer";
+
+      let templateInfo = document.createElement("div");
+      templateInfo.className = "site-template__info";
+
+      let infoUsage = document.createElement("span");
+      infoUsage.className = "info__usage";
+      infoUsage.textContent = `${site.visits}/${site.allowance}`;
+
+      let infoRemove = document.createElement("span");
+      infoRemove.className = "typcn typcn-delete info__remove";
+      infoRemove.setAttribute("data-site", site.url);
+
+      iconWrapper.appendChild(innerIcon);
+
+      templateInfo.appendChild(infoUsage);
+      templateInfo.appendChild(infoRemove);
+
+      t.appendChild(iconWrapper);
+      t.appendChild(templateURL);
+      t.appendChild(templateSpacer);
+      t.appendChild(templateInfo);
 
       return t;
    }
