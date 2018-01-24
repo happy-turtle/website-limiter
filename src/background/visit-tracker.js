@@ -28,8 +28,6 @@
 
    // helper functions
    function onBeforeRequestListener(details) {
-      console.log("(WL) Before request:", details);
-
       const matchingSite = (function() {
          for (let site of sites) {
             for (let pattern of site.patterns) {

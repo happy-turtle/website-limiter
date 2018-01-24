@@ -181,11 +181,6 @@
       urlEl.value = "";
 
       const uData = parseURL(url);
-      console.log(
-         `(WL) ADDING SITE - Allowance: ${allowance}, Pattern: ${
-            uData.patterns
-         }, URL: ${uData.url}`
-      );
 
       // FIXME: allows duplicates right now
       browser.storage.local
