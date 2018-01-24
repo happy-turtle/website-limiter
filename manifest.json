@@ -3,8 +3,7 @@
    "name": "Website Limiter",
    "version": "1.0",
 
-   "description":
-      "Limits visits to given websites and provide periodic analysis of browser history to suggest new limits.",
+   "description": "Limits visits to given websites.",
 
    "icons": {
       "48": "icons/icon-48.png",
