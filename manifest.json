@@ -5,6 +5,12 @@
 
    "description": "Limits visits to given websites.",
 
+   "applications": {
+      "gecko": {
+         "id": "{9489d7dd-ba5f-4ddc-993a-9a31569fa26a}"
+      }
+   },
+
    "icons": {
       "48": "icons/icon-48.png",
       "96": "icons/icon-96.png"
