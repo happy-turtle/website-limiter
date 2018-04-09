@@ -1,13 +1,13 @@
 (function(browser) {
    let s = new Set();
    let i = 0;
-   const wrapper = document.querySelector(".splash-body__suggestions");
+   const [r1, r2] = document.querySelectorAll(".splash-body__suggestions .row");
 
    while (i < NUM_SUGGESTIONS) {
       const idx = Math.floor(Math.random() * RESOURCES.length);
       if (!s.has(idx)) {
          const suggestion = createSuggestion(RESOURCES[idx]);
-         wrapper.append(suggestion);
+         (i < 3 ? r1 : r2).append(suggestion);
          s.add(idx);
          i++;
       }
@@ -41,11 +41,22 @@
       document.body.querySelector(".splash-body__clock").textContent = tm;
    }
 
-   function createSuggestion(suggestionURL) {
+   function createSuggestion(suggestionData) {
       let suggestion = document.createElement("a");
+      let suggestionText = document.createElement("div");
+      let suggestionTextContent = document.createElement("p");
+
       suggestion.className = "suggestion";
-      suggestion.href = suggestionURL;
-      suggestion.textContent = suggestionURL;
+      suggestion.href = suggestionData.url;
+      suggestion.style = `background-image:url(${suggestionData.image});`;
+
+      suggestionText.className = "suggestion__text";
+      suggestion.append(suggestionText);
+
+      suggestionTextContent.className = "suggestion__textcontent";
+      suggestionTextContent.textContent = suggestionData.name;
+      suggestionText.append(suggestionTextContent);
+
       return suggestion;
    }
 

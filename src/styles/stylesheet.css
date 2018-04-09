@@ -235,32 +235,54 @@ body {
    padding-top: 25px;
 }
 
+.row {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
 .suggestion,
 .suggestion:link,
 .suggestion:active,
 .suggestion:visited {
    display: block;
-   color: black;
-   text-decoration: none !important;
    box-sizing: border-box;
+   text-decoration: none !important;
    float: left;
-   padding: 35px 15px;
+   padding: 100px 15px;
    margin-bottom: 25px;
-   width: 33%;
-   text-align: center;
+   width: 30%;
    box-shadow: 0px 0px 10px rgba(23, 23, 23, 0.15);
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   position: relative;
+   background-color: rgba(45, 116, 204, 0.15);
+   transition: 250ms all;
+}
+
+.suggestion__text {
    overflow: hidden;
    text-overflow: ellipsis;
    white-space: nowrap;
+   color: black;
+   text-align: center;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   position: absolute;
+   display: flex;
+   justify-content: center;
+   align-items: flex-end;
+   overflow: hidden;
 }
 
-.suggestion:nth-of-type(2),
-.suggestion:nth-of-type(5),
-.suggestion:nth-of-type(8) {
-   width: calc(33% - 50px);
-   margin-left: 25px;
-   margin-right: 25px;
-   transition: 250ms all;
+.suggestion__textcontent {
+   background-color: #fff;
+   box-shadow: 0px 0px 12px rgba(23, 23, 23, 0.1);
+   padding: 10px 0;
+   flex: 1;
 }
 
 .suggestion:hover {
